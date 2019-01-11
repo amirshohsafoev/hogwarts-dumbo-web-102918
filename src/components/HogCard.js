@@ -7,12 +7,18 @@ class HogCard extends React.Component {
   clickHandler = () => {
     let value = this.state.clicked;
     this.setState({ clicked: !value });
-    console.log("clicked");
   };
   render() {
-    console.log(this.state.clicked);
+    var show = {
+      display: this.state.clicked ? "block" : "none"
+    };
+
+    // var hidden = {
+    // 	display: this.state.clicked ? "none" : "block"
+    // }
+
     return (
-      <div>
+      <div class="ui link cards">
         <h3>{this.props.hog.name}</h3>
         <img
           onClick={this.clickHandler}
@@ -21,10 +27,10 @@ class HogCard extends React.Component {
             .replace(/\s/g, "_")}.jpg`)}
           alt=""
         />
-        <p>{this.props.hog.specialty}</p>
-        <p>Greade: {this.props.hog.greased ? "yes" : "no"}</p>
-        <p>Weight</p>
-        <p>Highest medal achieved</p>
+        <p style={show}>{this.props.hog.specialty}</p>
+        <p style={show}>Greade: {this.props.hog.greased ? "yes" : "no"}</p>
+        <p style={show}>Weight</p>
+        <p style={show}>Highest medal achieved</p>
       </div>
     );
   }
